@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/index';
+import { LoginComponent } from './login/index';
 // import { OrganisationComponent, EditorganisationComponent ,AddorganisationComponent } from './organisation/index';
 // import { ProfileComponent } from './profile/index';
 // import { UsersComponent, EdituserComponent } from './users/index';
@@ -13,6 +14,7 @@ import { HomeComponent } from './home/index';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
     // { path: 'organisation', component: OrganisationComponent, canActivate: [AuthGuard] },
     // { path: 'edit-organisation/:id', component: EditorganisationComponent, canActivate: [AuthGuard] },
     // { path: 'add-organisation', component: AddorganisationComponent, canActivate: [AuthGuard] },
