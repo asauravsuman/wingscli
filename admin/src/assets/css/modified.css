@@ -29,9 +29,7 @@
   opacity: 0.4;
   filter: alpha(opacity=40); /* For IE8 and earlier */
 }
-.login-card{
-	background-color:#08143c;
-}
+
 .sidebar-wrapper .menu-link{
 	color:#08143c;
 }
