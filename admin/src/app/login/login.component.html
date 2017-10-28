@@ -1,0 +1,47 @@
+<div class="jumbotron">
+    <div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+    <div class="row">
+    <div class="col-lg-12 col-md-12">
+    <div class="login-card card">
+        <div class="header text-center">
+            <h4 class="title"><img src="assets/img/KiWingsLogo.png" /></h4>
+        </div>
+        <div class="content">
+        <form name="form" >
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" >
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control border-input" placeholder="Username" name="username"  required>
+                    </div>
+                </div>
+                
+            </div>
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" >
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control border-input" placeholder="Password" name="password"  required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button [disabled]="loading" type="submit" class="btn btn-info btn-fill btn-wd">Login</button>
+                <img *ngIf="loading" src="" />
+            </div>
+            <div class="pull-right">
+                <a [routerLink]="['/register']" >Register</a> &nbsp;&nbsp;&nbsp;
+                <a [routerLink]="['/register']" >Forgot Password</a>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>

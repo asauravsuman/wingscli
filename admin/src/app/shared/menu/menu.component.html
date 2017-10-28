@@ -1,0 +1,77 @@
+﻿<ul *ngIf="isSuperAdmin()" class="nav">
+    <li class="{{flagActiveDashboard}}">
+        <a href="/">
+            <i class="ti-dashboard"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li class="{{flagActiveOrganisation}}">
+        <a href="/organisation">
+            <i class="ti-blackboard"></i>
+            <p>Organisation</p>
+        </a>
+    </li>
+    <li class="{{flagActiveUsers}}">
+        <a href="/users">
+            <i class="ti-id-badge"></i>
+            <p>Users</p>
+        </a>
+    </li>
+    <li class="{{flagActiveProfile}}">
+        <a href="/profile">
+            <i class="ti-user"></i>
+            <p>Profile</p>
+        </a>
+    </li>
+    <li class="{{flagActiveSettings}}">
+        <a href="/settings">
+            <i class="ti-settings"></i>
+            <p>Settings</p>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="ti-lock"></i>
+            <p><a class="menu-link" [routerLink]="['/login']">Logout</a></p>
+        </a>
+    </li>
+</ul>
+
+<ul *ngIf="isOrganisationAdmin()" class="nav">
+    <li class="{{flagActiveDashboard}}">
+        <a href="/">
+            <i class="ti-dashboard"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li class="{{flagActiveCourses}}">
+        <a href="/courses">
+            <i class="ti-ticket"></i>
+            <p>Courses</p>
+        </a>
+    </li>
+    <li class="{{flagActiveEmployee}}"> 
+        <a href="/employee">
+            <i class="ti-id-badge"></i>
+            <p>Employee</p>
+        </a>
+    </li>
+    <li class="{{flagActiveProfile}}">
+        <a href="/profile">
+            <i class="ti-user"></i>
+            <p>Profile</p>
+        </a>
+    </li>
+    <li class="{{flagActiveSettings}}">
+        <a href="/settings">
+            <i class="ti-settings"></i>
+            <p>Settings</p>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="ti-lock"></i>
+            <p><a class="menu-link" [routerLink]="['/login']">Logout</a></p>
+        </a>
+    </li>
+</ul>

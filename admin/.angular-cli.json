@@ -18,10 +18,14 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [
-        "styles.css"
+      "styles": [ 
+        "assets/css/bootstrap.min.css",
+        "assets/css/paper-dashboard.css",
+        "assets/css/modified.css"
       ],
-      "scripts": [],
+      "scripts": [
+        
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
