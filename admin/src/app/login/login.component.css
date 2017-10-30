@@ -1,3 +1,13 @@
 .login-card{
 	background-color:#08143c;
 }
+.card{
+  min-height: 500px;
+}
+.card label{
+    color: #FFF;
+    width: 100%;
+}
+.card .help-block{
+    color: #A00;
+}

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }    from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { RouteComponent } from './app.route';
@@ -11,9 +13,16 @@ import { MenuComponent } from './shared/menu/index';
 import { LogoComponent } from './shared/logo/index';
 import { HeaderComponent } from './shared/header/index';
 
+import { AlertComponent, DataFilterPipe } from './_directives/index';
+import { AuthGuard } from './_guards/index';
+import { AlertService, AuthenticationService, UserService, OrganisationService, CourseService } from './_services/index';
+
+
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
+    DataFilterPipe,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -21,9 +30,18 @@ import { HeaderComponent } from './shared/header/index';
   ],
   imports: [
     BrowserModule,
-    RouteComponent
+    RouteComponent,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+  	AuthGuard,
+  	AlertService,
+    AuthenticationService,
+    UserService,
+    OrganisationService,
+    CourseService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

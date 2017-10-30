@@ -8,22 +8,23 @@
             <h4 class="title"><img src="assets/img/KiWingsLogo.png" /></h4>
         </div>
         <div class="content">
-        <form name="form" >
+        <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" >
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group" >
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control border-input" placeholder="Username" name="username"  required>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                        <label for="username">Username 
+                            <div *ngIf="f.submitted && !username.valid" class="pull-right help-block">Username is required</div></label>
+                        <input [(ngModel)]="model.username" #username="ngModel" type="text" class="form-control border-input" placeholder="Username" name="username"  required>
                     </div>
                 </div>
-                
             </div>
     
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group" >
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control border-input" placeholder="Password" name="password"  required>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }" >
+                        <label for="password">Password 
+                            <div *ngIf="f.submitted && !username.valid" class="pull-right help-block">Password is required</div></label>
+                        <input [(ngModel)]="model.password" #password="ngModel" type="password" class="form-control border-input" placeholder="Password" name="password"  required>  
                     </div>
                 </div>
             </div>

@@ -4,6 +4,8 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 
+import { AuthGuard } from './_guards/index';
+
 // import { OrganisationComponent, EditorganisationComponent ,AddorganisationComponent } from './organisation/index';
 // import { ProfileComponent } from './profile/index';
 // import { UsersComponent, EdituserComponent } from './users/index';
@@ -15,7 +17,7 @@ import { RegisterComponent } from './register/index';
 // import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     // { path: 'organisation', component: OrganisationComponent, canActivate: [AuthGuard] },

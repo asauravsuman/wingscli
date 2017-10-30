@@ -5,9 +5,7 @@
     opacity: 1;
     padding-top: 100px;
 }
-.card{
-  min-height: 500px;
-}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -36,19 +34,13 @@
 .table-striped thead th a, .category, .table-striped tbody td a{
   color:#252422 !important; 
 }
-.card label{
-    color: black;
-}
 .author .img-rounded{
     margin: 0 auto;
 }
 .card-user .title{
     line-height: 20px;
 }
-.card label{
-    color: black;
-    width: 100%;
-}
+
 .author .img-rounded{
     margin: 0 auto;
 }
