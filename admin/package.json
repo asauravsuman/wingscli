@@ -23,7 +23,10 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "angular2-datatable": "^0.6.0",
+    "ng2-select": "^1.2.0",
+    "ngx-dropzone-wrapper": "^4.6.3"
   },
   "devDependencies": {
     "@angular/cli": "1.4.9",

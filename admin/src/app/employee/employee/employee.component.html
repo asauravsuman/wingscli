@@ -1,0 +1,51 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">Employee
+                <a href="/add-employee"><span><button class="btn btn-info btn-fill btn-xs btn-wd pull-right">Add Employee</button></span></a>
+            </h4> 
+            <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
+                       [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                    <thead>
+                        <tr>
+                        <th><mfDefaultSorter by="name">Name</mfDefaultSorter></th>
+                        <th><mfDefaultSorter by="email">Email</mfDefaultSorter></th>
+                        <th><mfDefaultSorter by="createdAt">Created On</mfDefaultSorter> </th>
+                        <th><mfDefaultSorter by="phone">Phone</mfDefaultSorter></th>
+                        <th><mfDefaultSorter by="role">Role</mfDefaultSorter></th>
+                        <th>Action</th>
+                        </tr>
+                        <!-- <tr>
+                            <th colspan="5">
+                                Filter by name:
+                                <input class="form-control" [(ngModel)]="filterQuery"/>
+                            </th>
+                        </tr> -->
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let row of mf.data">
+                        <td> {{row.fullname[0].first+ ' ' + row.fullname[0].last}}  </td>
+                        <td> {{row.email}} </td>
+                        <td> {{row.createdAt | date: 'mediumDate'}} </td>
+                        <td> {{row.phone}} </td>
+                        <td> {{row.role[0].role}} </td>
+                        <td> &nbsp;
+                             <a href="/edit-employee/{{row._id}}"> <i class="ti-pencil"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot><tr><td colspan="10"><mfBootstrapPaginator ></mfBootstrapPaginator></td></tr></tfoot>
+                </table>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>

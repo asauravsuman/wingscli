@@ -1,0 +1,93 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-4 col-md-5">
+        <div class="card card-user">
+            <br><br><br><br>
+            <div class="content">
+                <div class="author">
+                  <img src="assets/img/faces/face-2.jpg" alt="Raised Image" class="img-rounded img-responsive img-raised">
+                  <h5 class="title title-height">{{currentUser.fullname}}<br />
+                     <a href="#"><small>{{currentUser.role }}</small></a>
+                  </h5>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-7">
+        <div  class="card">
+            <div class="header">
+                <h4 class="title">Edit Course 
+                <a href="/add-topic-to-course/{{model.id}}"><span><button class="btn btn-info btn-fill btn-xs btn-wd pull-right">Add Topic</button></span></a></h4>
+            </div>
+            <div class="content">
+                <form name="form" (ngSubmit)="f.form.valid && saveCourse()" #f="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid  }" >
+                                <label for="title">Title<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !title.valid" class="errmsg">Enter Title</span> </label>
+                                <input type="text" class="form-control border-input"  name="title" [(ngModel)]="model.title" #title="ngModel" placeholder="Title" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group"   [ngClass]="{ 'has-error': f.submitted && selDepartment != 0  }" > 
+                                <label for="Department">Department<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && selDepartment != 0" class="errmsg">Enter Department</span> </label>
+                                    <ng-select name="department"
+                                            [(ngModel)] = "selDepartment"
+                                            (selected)="onDepartmentSelection($event)"
+                                            (deselected)="onDepartmentUnselection($event)"
+                                            [multiple]="true"
+                                            [options]="ListDepartment">
+                                    </ng-select>
+                                <!-- <input type="text" class="form-control border-input"  name="department" [(ngModel)]="model.department" #department="ngModel" placeholder="Department" required> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && selBranch!= 0  }">
+                                <label for="Branch">Branch<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && selBranch!= 0" class="errmsg">Enter Branch</span> </label>
+                                    <ng-select name="branch"
+                                            [(ngModel)] = "selBranch"
+                                            (selected)="onBranchSelection($event)"
+                                            (deselected)="onBranchUnselection($event)"
+                                            [multiple]="true"
+                                            [options]="ListBranch">
+                                    </ng-select>
+                                <!-- <input type="text" class="form-control border-input"  name="branch" [(ngModel)]="model.branch" #branch="ngModel" placeholder="Branch" required> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !description.valid  }" >
+                                <label for="Description">Description<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !description.valid" class="errmsg">Enter Description</span> </label>
+                                    <textarea rows="2"  name="description" [(ngModel)]="model.description" #description="ngModel" class="form-control border-input" placeholder="Here can be your description" required></textarea>
+                               <!--  <input type="text" class="form-control border-input"  name="description" [(ngModel)]="model.description" #description="ngModel" placeholder="Description" required> -->
+                            </div>
+                        </div>
+                    </div>
+                           
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd">Save</button>
+                    </div>
+                <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+</div>
+</div>

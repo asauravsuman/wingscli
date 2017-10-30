@@ -1,0 +1,81 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Settings</h4> 
+                                <p class="category">Here is a subtitle for this table</p>
+                            </div>
+
+                            <div class="row hide">
+                                <div class="col-xs-2">
+                                    <label class="label-control">Rows on page</label>
+                                    <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                                        <option [ngValue]="5">5</option>
+                                        <option [ngValue]="10">10</option>
+                                        <option [ngValue]="15">15</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="row">
+                                        <label class="col-xs-12 label-control">Sort by</label>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <select class="form-control input-sm" [(ngModel)]="sortBy">
+                                                <option ngValue="name">Name</option>
+                                                <option ngValue="email">Email</option>
+                                                <option ngValue="age">Age</option>
+                                                <option [ngValue]="sortByWordLength">City</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <select class="form-control input-sm" [(ngModel)]="sortOrder">
+                                                <option ngValue="asc">Ascending</option>
+                                                <option ngValue="desc">Descending</option>
+                                                <option ngValue="badValue">Bad value</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
+                                       [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                                    <thead>
+                                        <tr>
+                                        <th><mfDefaultSorter by="title">Name</mfDefaultSorter></th>
+                                        <th><mfDefaultSorter by="status">Status</mfDefaultSorter></th>
+                                        <th><mfDefaultSorter by="createdAt">Created On</mfDefaultSorter> </th>
+                                        <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let row of mf.data">
+                                        <td> {{row.title}}  </td>
+                                        <td> {{row.status}} </td>
+                                        <td>  {{row.createdAt | date: 'mediumDate'}} </td>
+                                        <td> <i class="ti-trash"></i>  &nbsp;<i class="ti-eye"></i> </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5"><mfBootstrapPaginator ></mfBootstrapPaginator></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>

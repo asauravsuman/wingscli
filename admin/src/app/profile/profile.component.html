@@ -1,0 +1,132 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-4 col-md-5">
+        <div class="card card-user">
+            <br><br><br><br>
+            <div class="content">
+                <div class="author">
+                  <img [src]="model.image"  alt="Raised Image" class="img-rounded img-responsive img-raised">
+                  <h5 class="title title-height">{{currentUser.fullname}}<br />
+                     <a href="#"><small>{{currentUser.role }}</small></a>
+                  </h5>
+                  <dropzone [config]="config" [message]="'Change your profile image'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-7">
+        <div *ngIf="activeTab == 'profile'" class="card">
+            <div class="header">
+                <h4 class="title">Edit Profile <span>
+                <button (click)="clickTab('password')" class="btn btn-info btn-fill btn-xs btn-wd pull-right">Change Password</button></span></h4> 
+            </div>
+            <div class="content">
+                <form name="form" (ngSubmit)="f.form.valid && saveProfile()" #f="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-4 ">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !first.valid  }">
+                                <label>First Name:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !first.valid" class="errmsg">Enter First Name</span> </label>
+                                <input type="text" class="form-control border-input input-sm" name="first" [(ngModel)]="model.first" #first="ngModel" placeholder="First Name" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div class="form-group">
+                                <label>Middle Name:</label>
+                                <input type="text" class="form-control border-input input-sm" name="middle" [(ngModel)]="model.middle" #middle="ngModel" placeholder="Middle Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !last.valid }">
+                                <label>Last Name:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !last.valid" class="errmsg">Enter Last Name</span> </label>
+                                <input type="text" class="form-control border-input input-sm" name="last" [(ngModel)]="model.last" #last="ngModel" required placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                                <label>Email:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !email.valid" class="errmsg">Enter Email</span> </label>
+                                    <input type="email" class="form-control border-input" disabled name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="Email" >
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Email:</label>
+                                    <input type="email" class="form-control border-input" disabled name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="Email" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+                                <label>Phone:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !phone.valid" class="errmsg">Enter Phone</span> </label>
+                                <input type="text" class="form-control border-input" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                           
+                    <div class="text-center">
+                        <button type="submit" [disabled]="loading" class="btn btn-info btn-fill btn-wd">Update Profile</button>
+                    </div>
+                <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="activeTab == 'password'" class="card">
+            <div class="header">
+                <h4 class="title">Change Password <span>
+                <button (click)="clickTab('profile')" class="btn btn-info btn-fill btn-xs btn-wd pull-right">Edit Profile</button></span></h4> 
+            </div>
+            <div class="content">
+                <form name="form" (ngSubmit)="f.form.valid && changePassword()" #f="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid  }">
+                                <label>Old Password:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !oldpassword.valid" class="errmsg">Enter Password</span> </label>
+                                <input type="text" class="form-control border-input input-sm" name="oldpassword" [(ngModel)]="modelPassword.oldpassword" #oldpassword="ngModel" placeholder="Old Password" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid  }">
+                                <label>Password:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !password.valid && password == confirmpassword " class="errmsg">Enter Password</span> </label>
+                                <input type="text" class="form-control border-input input-sm" name="password" [(ngModel)]="modelPassword.password" #password="ngModel" placeholder="Password" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !confirmpassword.valid  }">
+                                <label>Confirm Password:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !confirmpassword.valid" class="errmsg">Enter Confirm Password</span> </label>
+                                <input type="text" class="form-control border-input input-sm" name="confirmpassword" [(ngModel)]="modelPassword.confirmpassword" #confirmpassword="ngModel" placeholder="Confirm Password" required/>
+                            </div>
+                        </div>
+                    </div>
+                           
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-fill btn-wd">Update Password</button>
+                    </div>
+                <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,60 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Organisation
+                                <a href="/add-organisation"><span><button class="btn btn-info btn-fill btn-xs btn-wd pull-right">Add Organisation</button></span></a></h4>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+                                [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                                        </th>
+                                        <th>
+                                            <mfDefaultSorter by="type">Type</mfDefaultSorter>
+                                        </th>
+                                        <th>
+                                            <mfDefaultSorter by="createdAt">Created On</mfDefaultSorter>
+                                        </th>
+                                        <th>
+                                            <mfDefaultSorter by="">Address</mfDefaultSorter>
+                                        </th>
+                                        <th>
+                                            <mfDefaultSorter by="">Contact</mfDefaultSorter>
+                                        </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of mf.data">
+                                        <td> {{row.name}} </td>
+                                        <td> {{row.type}} </td>
+                                        <td> {{row.createdAt | date: 'mediumDate'}} </td>
+                                        <td> {{row.address[0].city}} </td>
+                                        <td> {{row.contact[0].name}} </td>
+                                        <td>
+                                            <a href="/edit-organisation/{{row._id}}"> <i class="ti-pencil"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr><td colspan="5">
+                                        <mfBootstrapPaginator [rowsOnPageSet]="[]"></mfBootstrapPaginator>
+                                    </td></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

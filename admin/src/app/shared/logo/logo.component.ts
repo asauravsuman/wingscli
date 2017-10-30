@@ -2,7 +2,7 @@
 
 @Component({
     moduleId: module.id,
-    selector: 'logo-cmp',
+    selector: 'app-logo-cmp',
     templateUrl: 'logo.component.html'
 })
 

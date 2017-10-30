@@ -1,0 +1,45 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Users</h4> 
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
+                                           [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                                        <thead>
+                                            <tr>
+                                            <th><mfDefaultSorter by="name">Name</mfDefaultSorter></th>
+                                            <th><mfDefaultSorter by="email">Email</mfDefaultSorter></th>
+                                            <th><mfDefaultSorter by="phone">Phone</mfDefaultSorter></th>
+                                            <th><mfDefaultSorter by="">Organisation</mfDefaultSorter></th>
+                                            <th><mfDefaultSorter by="">Role</mfDefaultSorter></th>
+                                            <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let row of mf.data">
+                                            <td> {{row.fullname[0].first+ ' ' + row.fullname[0].last}}  </td>
+                                            <td> {{row.email}} </td>
+                                            <td> {{row.createdAt | date: 'mediumDate'}} </td>
+                                            <td> {{row.phone}} </td>
+                                            <td> {{row.role[0].role}} </td>
+                                            <td> <i class="ti-eye"></i> &nbsp;
+                                                 <a href="/edit-user"> <i class="ti-pencil"></i></a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot><tr><td colspan="10"><mfBootstrapPaginator ></mfBootstrapPaginator></td></tr></tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,47 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+    <div class="header">
+        <h4 class="title">Courses
+            <a href="/add-course"><span><button class="btn btn-info btn-fill btn-xs btn-wd pull-right">Add Course</button></span></a>
+        </h4> 
+        <div class="content table-responsive table-full-width">
+            <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
+                   [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                <thead>
+                    <tr>
+                    <th><mfDefaultSorter by="title">Title</mfDefaultSorter></th>
+                   <!--  <th><mfDefaultSorter by="type">Department</mfDefaultSorter></th> -->
+                    <th><mfDefaultSorter by="accesstag">Access</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="status">Status</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="createdAt">Created On</mfDefaultSorter> </th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let row of mf.data">
+                    <td> {{row.title}} </td>
+                    <!-- <td> {{getDepartment(row.department)}} </td> -->
+                    <td>  {{row.accesstag}} </td>
+                    <td> {{row.status}} </td>
+                    <td> {{row.createdAt | date: 'mediumDate'}} </td>
+                    <td> &nbsp;
+                         <a href="/edit-course/{{row._id}}"> <i class="ti-pencil"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot><tr><td colspan="10"><mfBootstrapPaginator ></mfBootstrapPaginator></td></tr></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

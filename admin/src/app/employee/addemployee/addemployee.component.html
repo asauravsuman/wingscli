@@ -1,0 +1,82 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-4 col-md-5">
+        <div class="card card-user">
+            <br><br><br><br>
+            <div class="content">
+                <div class="author">
+                  <img src="assets/img/faces/face-2.jpg" alt="Raised Image" class="img-rounded img-responsive img-raised">
+                  <h5 class="title title-height">{{model.first +' '+model.middle+' '+model.last}}<br />
+                     <a href="#"><small>{{model.role }}</small></a>
+                  </h5>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-7">
+        <div  class="card">
+            <div class="header">
+                <h4 class="title">Add Employee 
+                <a href="/employee"><span><button class="btn btn-info btn-fill btn-xs btn-wd pull-right">Back</button></span></a></h4> 
+            </div>
+            <div class="content">
+                <form name="form" (ngSubmit)="f.form.valid && saveEmployee()" #f="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-4 ">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !first.valid  }">
+                                <label>First Name:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !first.valid" class="errmsg">Enter first Name</span> </label>
+                                <input type="text" class="form-control border-input input-sm" name="first" [(ngModel)]="model.first" #first="ngModel" placeholder="First Name" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div class="form-group">
+                                <label>Middle Name:</label>
+                                <input type="text" class="form-control border-input input-sm" name="middle" [(ngModel)]="model.middle" #middle="ngModel" placeholder="Middle Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !last.valid }">
+                                <label>Last Name:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !last.valid" class="errmsg">Enter LastName</span> </label>
+                                <input type="text" class="form-control border-input input-sm" name="last" [(ngModel)]="model.last" #last="ngModel" required placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                                <label>Email:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !email.valid" class="errmsg">Enter Email</span> </label>
+                                <input type="email" class="form-control border-input" name="email" [(ngModel)]="model.email" #email="ngModel" required placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+                                <label>Phone:<span class="asterik">*</span>
+                                    <span *ngIf="f.submitted && !phone.valid" class="errmsg">Enter Phone</span> </label>
+                                <input type="text" class="form-control border-input" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                           
+                    <div class="text-center">
+                        <button type="submit" [disabled]="loading" class="btn btn-info btn-fill btn-wd">Save</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+</div>
+</div>

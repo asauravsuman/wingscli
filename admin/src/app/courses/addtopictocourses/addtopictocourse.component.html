@@ -1,0 +1,268 @@
+﻿<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+    <div id="addtopic" class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" style="min-height: 60px;">
+                        <div class="header">
+                            <div class="row">
+                                <div class="col-md-2">
+                                <div class="author">
+                                <img src="assets/img/faces/face-2.jpg" alt="Raised Image" class="img-stamp img-rounded img-responsive img-raised">
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="title">{{model.title}}
+                                            <a href="/edit-course/{{model.id}}"><span><button class="btn btn-info btn-fill btn-xs btn-wd pull-right">Edit Course</button></span></a>
+                                        </h4></div>
+                                        <div class="col-md-6"><span class="active">Department: </span>{{selDepartment}}</div>
+                                        <div class="col-md-6"><span class="active">Branch: </span>{{selBranch}}</div>
+                                        <div class="col-md-12"><span class="active">Description</span> {{model.description}} </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>    
+                <div class="col-md-2">
+                    <div class="card" style="min-height: 400px;">
+                        <div class="content">
+                            <ul class="list-unstyled team-members">
+                                <li [ngClass]="{'active': activeTab == 'topic'}" (click)="clickTab('topic')" >
+                                    <div class="row"><div class="col-xs-12">Topic</div></div> </li>
+                                <li [ngClass]="{'active': activeTab == 'dropdown'}" (click)="clickTab('dropdown')" >
+                                    <div class="row"><div class="col-xs-12">Dropdown</div></div> </li>
+                                <li [ngClass]="{'active': activeTab == 'radio'}" (click)="clickTab('radio')" >
+                                    <div class="row"><div class="col-xs-12">Single Choice</div></div> </li>        
+                                <li [ngClass]="{'active': activeTab == 'checkbox'}" (click)="clickTab('checkbox')" >
+                                    <div class="row"><div class="col-xs-12">Multiple Choice</div></div> </li>
+                                <li [ngClass]="{'active': activeTab == 'image'}" (click)="clickTab('image')" >
+                                    <div class="row"><div class="col-xs-12">Image </div></div> </li>
+                       <!--          <li (click)="clickTab('password')" ><div class="row"><div class="col-xs-12">Check box</div></div> </li>
+                                <li (click)="clickTab('password')" ><div class="row"><div class="col-xs-12">Topic</div></div> </li> -->
+        
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div  class="card" style="min-height: 400px;">
+                        <!-- TOPIC -->
+                        <div *ngIf="activeTab == 'topic'" class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Title</label>
+                                            <input name="topictitle" [(ngModel)]="topic.topictitle" #topictitle="ngModel" type="text" class="form-control border-input" placeholder="Title">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea rows="2" class="form-control border-input" placeholder="Here can be your description" ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                       
+                                <div class="text-center">
+                                    <button (click)="saveTopic()" type="button" class="btn btn-info btn-fill btn-wd">Update</button>
+                                </div>
+                            <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <!-- TOPIC -->
+                        <!-- DROPDOWN -->
+                        <div *ngIf="activeTab == 'dropdown'" class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Title</label>
+                                            <input type="text" name="dropdowntitle" [(ngModel)]="dropdown.dropdowntitle" #dropdowntitle="ngModel" class="form-control border-input" placeholder="Title" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Dropdown Options are:</label>
+                                            <input type="text" class="form-control border-input input-sm" placeholder="Option 1" >
+                                            <input type="text" class="form-control border-input input-sm" placeholder="Option 2" >
+                                            <input type="text" class="form-control border-input input-sm" placeholder="Option 3" >
+                                            <label>Add One <i class="ti-plus"></i></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Correct Option</label>
+                                            <select></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                       
+                                <div class="text-center">
+                                    <button (click)="saveDropdown()" type="button" class="btn btn-info btn-fill btn-wd">Update</button>
+                                </div>
+                            <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <!-- DROPDOWN -->
+                        <!-- RADIO -->
+                        <div *ngIf="activeTab == 'radio'" class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Title</label>
+                                            <input type="text" name="radiotitle" [(ngModel)]="radio.radiotitle" #radiotitle="ngModel" class="form-control border-input" placeholder="Title" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Options are:</label>
+                                            <div class="radio">
+                                                <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                                <label for="radio1">
+                                                    <input type="text" class="form-control border-input input-sm" placeholder="Option 1" >
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                                <label for="radio1">
+                                                    <input type="text" class="form-control border-input input-sm" placeholder="Option 2" >
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                                <label for="radio1">
+                                                    <input type="text" class="form-control border-input input-sm" placeholder="Option 3" >
+                                                </label>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                       
+                                <div class="text-center">
+                                    <button (click)="saveRadio()" type="button" class="btn btn-info btn-fill btn-wd">Update</button>
+                                </div>
+                            <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <!-- RADIO -->
+                        <!-- CHECKBOX -->
+                        <div *ngIf="activeTab == 'checkbox'" class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Title</label>
+                                            <input type="text" name="checkboxtitle" [(ngModel)]="checkbox.checkboxtitle" #checkboxtitle="ngModel" class="form-control border-input" placeholder="Title" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Options are:</label>
+                                            <div class="checkbox">
+                                                <input id="checkbox6" type="checkbox" checked="">
+                                                <label for="checkbox6">
+                                                    <input type="text" class="form-control border-input input-sm" placeholder="Option 1" >
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkbox6" type="checkbox" checked="">
+                                                <label for="checkbox6">
+                                                    <input type="text" class="form-control border-input input-sm" placeholder="Option 2" >
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkbox6" type="checkbox" checked="">
+                                                <label for="checkbox6">
+                                                    <input type="text" class="form-control border-input input-sm" placeholder="Option 3" >
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input id="checkbox6" type="checkbox" checked="">
+                                                <label for="checkbox6">
+                                                    <input type="text" class="form-control border-input input-sm" placeholder="Option 4" >
+                                                </label>
+                                            </div>
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                       
+                                <div class="text-center">
+                                    <button (click)="saveCheckbox()" type="button" class="btn btn-info btn-fill btn-wd">Update</button>
+                                </div>
+                            <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <!-- CHECKBOX -->
+                        <!-- IMAGE -->
+                        <div *ngIf="activeTab == 'image'" class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Select Image</label>
+                                            <input type="file" class="form-control border-input" placeholder="Title">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Title</label>
+                                            <input type="text" name="imagetitle" [(ngModel)]="image.imagetitle" #imagetitle="ngModel" class="form-control border-input" placeholder="Title">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea rows="2" class="form-control border-input" placeholder="Here can be your description" ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                       
+                                <div class="text-center">
+                                    <button (click)="saveImage()" type="button" class="btn btn-info btn-fill btn-wd">Update</button>
+                                </div>
+                            <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <!-- IMAGE -->
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card" style="min-height: 400px;">
+                        <div class="content">
+                            <ul class="list-unstyled team-members">
+                                <h5>Saved Topic</h5> 
+                                <li *ngFor="let row of listTopic">
+                                    <div class="row"><div class="col-xs-12">{{row}}</div></div>
+                                </li>    
+                                    
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

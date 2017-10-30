@@ -1,0 +1,166 @@
+<app-logo-cmp></app-logo-cmp>
+<div class="main-panel">
+<app-header-cmp></app-header-cmp>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div *ngIf="activeTab == 'org-first'" class="card">
+                        <div class="header">
+                            <h4 class="title">Add Organisation <span>
+                                    <div class=" pull-right">
+                                            <button [routerLink]="['/organisation']" class="btn btn-info btn-fill btn-xs btn-wd pull-right">Back</button>
+                                          </div>
+                            </span></h4>
+                        </div>
+                        <div class="content">
+                            <form name="form" (ngSubmit)="f.form.valid && addOrganisation()" #f="ngForm" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 ">
+                                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid  }">
+                                            <label>Name:<span class="asterik">*</span><span *ngIf="f.submitted && !name.valid" class="errmsg">Name required</span> </label>
+                                            <input type="text" class="form-control border-input input-sm" name="name" [(ngModel)]="model.name" #name="ngModel" placeholder=" Name "
+                                                required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !type.valid  }">
+                                            <label>Type:<span class="asterik">*</span><span *ngIf="f.submitted && !type.valid" class="errmsg">Type required</span> </label>
+                                            <input type="text" class="form-control border-input input-sm" name="type" [(ngModel)]="model.type" #type="ngModel" placeholder=" Type "
+                                                required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !contactemail .valid  }">
+                                            <label>Email:<span class="asterik">*</span><span *ngIf="f.submitted && !contactemail .valid" class="errmsg">Email required</span> </label>
+                                            <input type="text" class="form-control border-input input-sm" name="contactemail " [(ngModel)]="model.contactemail " #contactemail ="ngModel" placeholder=" Email "
+                                                required/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone1.valid  }">
+                                            <label>Phone1:<span class="asterik">*</span><span *ngIf="f.submitted && !phone1.valid" class="errmsg">Phone1 required</span> </label>
+                                            <input type="number" class="form-control border-input input-sm" name="phone1" [(ngModel)]="model.phone1" #phone1="ngModel"
+                                                placeholder=" Phone1 " required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Phone2:</label>
+                                            <input type="number" name="phone2" [(ngModel)]="model.phone2" #phone2="ngModel" class="form-control border-input input-sm"
+                                                placeholder="Phone2">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Website:</label>
+                                            <input type="text" name="website" [(ngModel)]="model.website" #website="ngModel" class="form-control border-input input-sm"
+                                                placeholder="Website">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" [disabled]="loading" class="btn btn-info btn-fill btn-wd">Save Organisation</button>
+                                </div>
+                                <div class="clearfix"></div><br>
+                            </form>
+                        </div>
+                    </div>
+                    <div *ngIf="activeTab == 'org-second'" class="card">
+                        <div class="header">
+                            <h4 class="title">Add Organisation <span>
+                                <button (click)="clickTab('org-first')" class="btn btn-info btn-fill btn-xs btn-wd pull-right">Add Organisation</button></span></h4>
+                        </div>
+                        <div class="content">
+                            <form name="form" (ngSubmit)="f.form.valid && addOrganisation()" #f="ngForm" novalidate>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Contact Name:</label>
+                                            <input type="text" name="contactname " [(ngModel)]="model.contactname " #contactname ="ngModel" class="form-control border-input input-sm"
+                                                placeholder=" name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label> Address1:</label>
+                                            <input type="text" name="address1" [(ngModel)]="model.address1" #address1="ngModel" class="form-control border-input input-sm"
+                                                placeholder=" address1">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label> Address2:</label>
+                                            <input type="text" name="address2" [(ngModel)]="model.address2" #address2="ngModel" class="form-control border-input input-sm"
+                                                placeholder=" address2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>City:</label>
+                                            <input type="text" name="city" [(ngModel)]="model.city" #city="ngModel" class="form-control border-input input-sm" placeholder="City">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Landmark:</label>
+                                            <input type="text" name="landmark" [(ngModel)]="model.landmark" #landmark="ngModel" class="form-control border-input input-sm"
+                                                placeholder="landmark">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Pincode:</label>
+                                            <input type="number" name="pincode" [(ngModel)]="model.pincode" #pincode="ngModel" class="form-control border-input input-sm"
+                                                placeholder="Pincode">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Fax:</label>
+                                            <input type="text" name="fax" [(ngModel)]="model.fax" #fax="ngModel" class="form-control border-input input-sm" placeholder="Fax">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>State:</label>
+                                            <input type="text" name="state" [(ngModel)]="model.state" #state="ngModel" class="form-control border-input input-sm"
+                                                placeholder="state">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Remarks:</label>
+                                                <input type="text" name="remarks" [(ngModel)]="model.remarks" #remarks="ngModel" class="form-control border-input input-sm"
+                                                    placeholder="remarks">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" [disabled]="loading" class="btn btn-info btn-fill btn-wd">Save Organisation</button>
+                                </div>
+                                <div class="clearfix"></div><br>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
