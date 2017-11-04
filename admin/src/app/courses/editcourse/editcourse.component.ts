@@ -10,8 +10,8 @@ import { AlertService, CourseService } from '../../_services/index';
 })
 
 export class EditcourseComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
+    currentUser: any = [];
+    users:any= [];
     loading = false;
     // model: any = {title: '', description:'', branch:Array, department:Array};
     model: any = { id:'', title: '', description:'', branch: '', department: '' };

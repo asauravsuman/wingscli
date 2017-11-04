@@ -9,8 +9,8 @@ import { AlertService, CourseService } from '../../_services/index';
 })
 
 export class AddcourseComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
+    currentUser:any = [];
+    users: any = [];
     loading = false;
     // model: any = {title: '', description:'', branch:Array, department:Array};
     model: any = {title: '', description:'', branch: '', department: '', mode:'', status:'', search:'', accesstag: '', fees:0, examtimelimit:0 };

@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
             this.alertService.success('Profile image updated successfully.');
         });
     }
-    onUploadError(){
+    onUploadError(args: any){
 
     }
     saveProfile(){

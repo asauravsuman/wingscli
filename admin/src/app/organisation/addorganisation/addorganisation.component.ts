@@ -12,6 +12,7 @@ import { Http } from "@angular/http";
 export class AddorganisationComponent implements OnInit {
     currentUser: any = {};
     loading = false;
+    activeTab= 'org-first';
     public model: any = {
         name: '', type: '', website: '',status:'',
         address1: '', address2: '', city: '', landmark: '', pincode: '', state: '',
